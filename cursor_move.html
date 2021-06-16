@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/a59b9b09ab.js" crossorigin="anonymous"></script>
+    <link href="F:\Program Files\fontawesome\css\all.css" rel="stylesheet">
+    <title>move cursor enable options</title>
+    <link rel="icon" href="2.jpeg">
+    <style>
+        * {
+            padding: 0px;
+            margin: 0px;
+            box-sizing: border-box;
+        }
+        
+        body {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        
+        .container {
+            width: 80%;
+            height: 90%;
+            border: 1px solid black;
+            background-color: rgb(14, 14, 41);
+            position: relative;
+        }
+        
+        #nev {
+            width: 420px;
+            height: 60px;
+            background-color: black;
+            position: absolute;
+            bottom: 120px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        ul {
+            display: inline-block;
+            text-decoration: none;
+        }
+        
+        ul li {
+            width: 60px;
+            height: 60px;
+            border: 2px solid transparent;
+            float: left;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+        
+        ul li:hover {
+            border-bottom: 2px solid white;
+        }
+        
+        i {
+            font-size: 30px;
+            color: white;
+        }
+        
+        #end {
+            background-color: rgba(241, 15, 15, .8);
+        }
+        
+        #end:hover {
+            background-color: red;
+        }
+        
+        @media (max-width: 700px) {
+            .container {
+                width: 100%;
+                height: 100%;
+            }
+            #nev {
+                width: 280px;
+                height: 40px;
+            }
+            ul li {
+                width: 40px;
+                height: 40px;
+            }
+            i {
+                font-size: 23px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container" onmousemove="mousemoving()">
+        <div id="nev">
+            <ul>
+                <li> <i class="fa fa-video" aria-hidden="true" id="video" onclick="video()"></i></li>
+                <li> <i class="fas fa-microphone" id="phon" onclick="phon()"></i></li>
+                <li><i class="fas fa-volume-up" id="volume" onclick="volume()"></i></li>
+                <li><i class="fas fa-users"></i></li>
+                <li><i class="far fa-comment-dots"></i></li>
+                <li><i class="fas fa-ellipsis-h"></i></li>
+                <li id="end"> <i class="fas fa-phone-slash"></i> </li>
+            </ul>
+        </div>
+    </div>
+</body>
+<script>
+    var t;
+    var a = document.getElementById("nev");
+
+    function mousemoving() {
+
+        a.style = "display:block";
+        clearInterval(t);
+        t = setTimeout(() => {
+            a.style = "display:none";
+        }, 3000); //add 3second
+    }
+
+
+
+
+    function video() {
+        var video = document.getElementById("video");
+        if (video.className == "fa fa-video")
+            video.className = "fa fa-video-slash";
+        else
+            video.className = "fa fa-video";
+    }
+
+    function phon() {
+        var phon = document.getElementById("phon");
+        if (phon.className == "fas fa-microphone")
+            phon.className = "fas fa-microphone-slash";
+        else
+            phon.className = "fas fa-microphone";
+    }
+
+    function volume() {
+        var volume = document.getElementById("volume");
+        if (volume.className == "fas fa-volume-up")
+            volume.className = "fas fa-volume-mute";
+        else
+            volume.className = "fas fa-volume-up";
+    }
+</script>
+
+</html>
